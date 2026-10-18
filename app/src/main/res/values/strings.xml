@@ -1,4 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Calculadora</string>
+    <string name="titulo">Calculadora</string>
+    <string name="desc_formula">Fórmula del cálculo seleccionado</string>
+
+    <string-array name="opciones_calculo">
+        <item>Índice de masa corporal</item>
+        <item>Ley de Ohm</item>
+        <item>Interés simple</item>
+        <item>Distancia recorrida</item>
+    </string-array>
+
+    <!-- Acciones y resultados -->
+    <string name="calcular">Calcular</string>
+    <string name="resultado_imc">IMC: %1$.2f — %2$s</string>
+    <string name="resultado_ohm">Voltaje: %1$.2f V</string>
+    <string name="resultado_interes">Interés: %1$.2f</string>
+    <string name="resultado_distancia">Distancia: %1$.2f km</string>
+    <string name="revisa_errores">Corrige los campos marcados</string>
+
+    <!-- Clasificación del IMC -->
+    <string name="bmi_bajo">Bajo peso</string>
+    <string name="bmi_normal">Peso normal</string>
+    <string name="bmi_sobrepeso">Sobrepeso</string>
+    <string name="bmi_obesidad">Obesidad</string>
+
+    <!-- Etiquetas de los campos -->
+    <string name="campo_peso">Peso</string>
+    <string name="campo_altura">Altura</string>
+    <string name="campo_corriente">Corriente</string>
+    <string name="campo_resistencia">Resistencia</string>
+    <string name="campo_capital">Capital</string>
+    <string name="campo_tasa">Tasa de interés</string>
+    <string name="campo_tiempo_anios">Tiempo</string>
+    <string name="campo_velocidad">Velocidad</string>
+    <string name="campo_tiempo_horas">Tiempo</string>
+
+    <!-- Unidades -->
+    <string name="unidad_kg">kg</string>
+    <string name="unidad_m">m</string>
+    <string name="unidad_a">A</string>
+    <string name="unidad_ohm">Ω</string>
+    <string name="unidad_dolar">$</string>
+    <string name="unidad_porcentaje">%</string>
+    <string name="unidad_anios">años</string>
+    <string name="unidad_kmh">km/h</string>
+    <string name="unidad_horas">h</string>
+
+    <!-- Ayudas por campo -->
+    <string name="ayuda_peso">Entre 1 y 300 kg</string>
+    <string name="ayuda_altura">Entre 0.5 y 2.5 m</string>
+    <string name="ayuda_corriente">Debe ser mayor que 0</string>
+    <string name="ayuda_resistencia">Debe ser mayor que 0</string>
+    <string name="ayuda_capital">Debe ser mayor que 0</string>
+    <string name="ayuda_tasa">Entre 0 y 100 %</string>
+    <string name="ayuda_tiempo_anios">Debe ser mayor que 0</string>
+    <string name="ayuda_velocidad">No puede ser negativa</string>
+    <string name="ayuda_tiempo_horas">No puede ser negativo</string>
+
+    <!-- Errores de validación -->
+    <string name="error_vacio">Este campo es obligatorio</string>
+    <string name="error_numero">Ingresa un número válido</string>
+    <string name="error_peso">Peso fuera de rango (1 a 300 kg)</string>
+    <string name="error_altura">Altura fuera de rango (0.5 a 2.5 m)</string>
+    <string name="error_corriente">La corriente debe ser mayor que 0 A</string>
+    <string name="error_resistencia">La resistencia debe ser mayor que 0 Ω</string>
+    <string name="error_capital">El capital debe ser mayor que 0</string>
+    <string name="error_tasa">La tasa debe estar entre 0 y 100 %</string>
+    <string name="error_tiempo_anios">El tiempo debe ser mayor que 0 años</string>
+    <string name="error_velocidad">La velocidad no puede ser negativa</string>
+    <string name="error_tiempo_horas">El tiempo no puede ser negativo</string>
 </resources>
