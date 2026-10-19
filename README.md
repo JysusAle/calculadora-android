@@ -1,100 +1,79 @@
-# calculadora-android
-This repository contains the work from the curse of movil compute
+# Calculadora interactiva con formularios dinámicos
 
-Ejercicio 1 en Android - Calculadora interactiva con formularios dinámicos
- 
+**Ejercicio 1 — Computación Móvil** · Android · Kotlin · Interfaz XML
 
-Desarrollar de manera individual una aplicación para Android utilizando Android Studio y Kotlin.
+Aplicación Android que permite seleccionar cuatro tipos de cálculos desde un menú y resolverlos mediante un formulario que se adapta al cálculo elegido, con validación de datos previa y presentación clara del resultado.
 
-La aplicación deberá permitir al usuario seleccionar y resolver distintos tipos de cálculos mediante una interfaz dinámica. El objetivo principal del ejercicio es aplicar correctamente la interacción con componentes de interfaz, captura de datos, validación de formularios y procesamiento de la información ingresada por el usuario. 
+## Cálculos disponibles
 
-1. Selección del cálculo
+| Opción | Fórmula | Datos de entrada | Resultado |
+|---|---|---|---|
+| Índice de masa corporal | `IMC = m / h²` | Peso (kg), Altura (m) | Valor + clasificación (bajo peso / peso normal / sobrepeso / obesidad) |
+| Ley de Ohm | `V = I × R` | Corriente (A), Resistencia (Ω) | Voltaje en V |
+| Interés simple | `I = C · r · t` | Capital ($), Tasa (%), Tiempo (años) | Interés ganado |
+| Distancia recorrida | `d = v × t` | Velocidad (km/h), Tiempo (h) | Distancia en km |
 
-La aplicación deberá presentar un menú que contenga cuatro opciones de cálculo.
+El interés simple es el cálculo con **tres datos de entrada**; los demás requieren dos.
 
-De estas cuatro opciones:
+## Qué incluye
 
+- **Menú de selección** (Spinner) con las 4 opciones de cálculo.
+- **Formulario dinámico**: al cambiar de opción se actualizan etiquetas, unidades (sufijo de cada campo), ayudas al usuario, la imagen de la fórmula correspondiente y la cantidad de campos visibles (el tercer campo solo aparece cuando se necesita).
+- **Validación antes de calcular**, específica para cada cálculo:
+  - Campos obligatorios y valores numéricos válidos.
+  - Restricción de positivos / no negativos / distintos de cero.
+  - Rangos: peso 1–300 kg, altura 0.5–2.5 m, tasa 0–100 %, corriente y resistencia > 0, capital > 0, tiempo > 0.
+  - El error se muestra en el campo correspondiente y **no se realiza ningún cálculo** mientras haya datos incorrectos.
+- **Resultado** con valor calculado, unidad correspondiente y clasificación cuando aplica.
+- **Ícono personalizado** (calculadora adaptativa con soporte de theming).
+- **Sin textos hardcodeados**: todos los textos viven en recursos de cadenas.
 
-Al menos una deberá corresponder a una fórmula que requiera tres o más datos de entrada.
-Las demás deberán requerir como mínimo dos datos.
-No se podrán utilizar únicamente conversiones directas de unidades.
-Cada opción deberá implicar algún tipo de procesamiento o validación particular.
-Algunos ejemplos de cálculos posibles son:
+## Idiomas
 
-Raíces reales de una ecuación de segundo grado.
-Índice de masa corporal con clasificación del resultado.
-Ley de Ohm.
-Energía cinética.
-Volumen y área de un cuerpo geométrico.
-Interés simple o compuesto.
-Conversión de temperatura con validación respecto al cero absoluto.
-Distancia recorrida a partir de velocidad y tiempo.
-Cálculo de consumo o rendimiento.
-No es obligatorio utilizar los ejemplos anteriores.
+La app está en **español** (por defecto) e **inglés**, mediante recursos de texto:
 
-2. Formulario dinámico
+```
+app/src/main/res/
+├── values/strings.xml          ← español
+└── values-en-rUS/strings.xml   ← inglés
+```
 
-Al seleccionar una opción del menú, el formulario deberá modificarse de acuerdo con el cálculo seleccionado y mostrar una imagen de la fórmula a utilizar.
+Cambia el idioma del dispositivo para verificarlo.
 
-Deberán cambiar, según corresponda:
+## Tecnología
 
-Los campos necesarios para introducir los datos.
-Las etiquetas de cada campo.
-Las unidades asociadas.
-Las ayudas o indicaciones para el usuario.
-La imagen o representación de la fórmula utilizada.
-No deberán permanecer visibles campos que no correspondan al cálculo seleccionado.
+- **Kotlin** + **XML** (Views) con **ViewBinding**
+- Material 3 (`TextInputLayout`, Spinner, Button)
+- `minSdk 28` · `targetSdk 37` · Gradle 9.6.0 · AGP 9.4.1
+- Estructura: una sola actividad (`MainActivity`) con `NestedScrollView`.
 
-3. Captura y validación de datos
+## Estructura del proyecto
 
-Antes de realizar cualquier cálculo se deberán validar todos los datos introducidos.
+```
+app/src/main/
+├── AndroidManifest.xml
+├── java/com/amaurypm/calculadora/
+│   └── MainActivity.kt        # formulario dinámico, validación y cálculos
+└── res/
+    ├── layout/activity_main.xml
+    ├── values/ (strings, colors, themes)
+    ├── values-en-rUS/strings.xml
+    ├── drawable-xhdpi/formula_*.png   # imágenes de fórmulas
+    ├── drawable/ic_launcher_*.xml     # ícono adaptativo
+    └── mipmap-*/                      # variantes de densidad
+```
 
-Como mínimo deberán contemplarse:
+## Cómo ejecutar
 
-Campos obligatorios.
-Valores numéricos válidos.
-Restricciones de valores positivos, negativos o diferentes de cero cuando corresponda.
-Rangos válidos cuando el dato tenga límites razonables.
-Relaciones entre dos o más campos cuando la fórmula lo requiera.
-Las validaciones deberán depender del cálculo seleccionado.
+1. Abrir la carpeta en **Android Studio**.
+2. Conectar un dispositivo con **depuración USB** activada (o usar un emulador con API ≥ 28).
+3. Presionar **Run ▶**.
 
-Por ejemplo:
+También puede instalarse el APK generado en `app/build/outputs/apk/debug/app-debug.apk`.
 
-En una ecuación de segundo grado, a no puede ser cero.
-Si solamente se desean raíces reales, el discriminante deberá ser mayor o igual a cero.
-Un radio o una longitud no pueden tener valores negativos.
-Un tiempo utilizado para un cálculo físico no deberá ser negativo.
-Una temperatura expresada en Celsius no podrá ser menor al cero absoluto.
-Una tasa porcentual deberá respetar el rango definido para el ejercicio.
-No deberá realizarse ningún cálculo mientras exista algún dato incorrecto.
+## Prueba rápida
 
-Los errores deberán indicarse de manera clara en los campos correspondientes o mediante algún mecanismo apropiado de retroalimentación al usuario.
-
-4. Procesamiento de datos
-
-Al presionar el botón Calcular, la aplicación deberá:
-
-Recuperar los datos introducidos en el formulario.
-
-Validarlos.
-Realizar el cálculo correspondiente.
-Procesar el resultado.
-Presentarlo al usuario de forma clara.
-El resultado deberá incluir:
-
-El valor calculado.
-La unidad correspondiente, cuando aplique.
-Un ejemplo de cómo podría lucir la interfaz se muestra a continuación:
-
-
-
-Consideraciones adicionales:
-
-El nivel de API mínimo será el 28.
-Pueden definir todos los elementos gráficos y/o de multimedia que deseen para hacer más llamativa la interfaz.
-La app deberá contar con un ícono personalizado.
-No deberán existir textos visibles al usuario escritos directamente mediante hard-coding en el código Kotlin o en los layouts.
-La aplicación debe estar en por lo menos dos idiomas desde el archivo de recursos de texto (español y otro).
-El ejercicio es individual, por lo que consideren que si encuentro ejercicios con sospecha de ser copia de otros, los anularé. La entrega se hará al subir toda la carpeta de su proyecto comprimida o al compartir en este espacio la liga de la carpeta comprimida del proyecto para ser descargada a través de un servicio de almacenamiento en la nube o en algún repositorio público en GitHub. La fecha máxima de entrega será el día domingo 18 de octubre de 2026 a las 23:59 hrs.
-
-Tomen en cuenta por favor que la plataforma bloqueará las entregas después de esa fecha y hora.
+1. Seleccionar **Interés simple** → verificar que aparece el tercer campo (Tiempo).
+2. Dejar un campo vacío y presionar **Calcular** → error en el campo, sin resultado.
+3. Escribir tasa `150` → rechazo por rango (0–100).
+4. IMC con peso `70`, altura `1.75` → `IMC: 22.86 — Peso normal`.
