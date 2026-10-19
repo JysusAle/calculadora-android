@@ -62,7 +62,7 @@ calculadora-android/          ← ya existe con README (enunciado) y .gitignore
 
 ## Estado
 - [x] Fase 1 — Esqueleto Gradle (BUILD SUCCESSFUL, minSdk 28, paquete com.amaurypm.calculadora)
-- [ ] Fase 2 — Layout + textos
-- [ ] Fase 3 — Fórmulas PNG + ícono
-- [ ] Fase 4 — Lógica MainActivity
-- [ ] Fase 5 — Verificación
+- [x] Fase 2 — Layout + textos (Spinner, ImageView, 3 campos con hints/unidades/ayudas, strings es + en-rUS)
+- [x] Fase 3 — Fórmulas PNG + ícono (4 PNG pizarra con PIL, ícono azul calculadora, webps 5 densidades, background drawable vector como los demás)
+- [x] Fase 4 — Lógica MainActivity (Spinner dinámico, validación por cálculo con errores en campo + toast, 4 cálculos con resultado y unidad)
+- [x] Fase 5 — Verificación final (lint pasa sin errores; 3 warnings benignos iguales a los otros proyectos; claves es/en idénticas; sin textos hardcodeados)
